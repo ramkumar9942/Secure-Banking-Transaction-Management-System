@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Banking App — Frontend</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="18" rx="3" fill="var(--secure-color)"/>
+            <path d="M12 7l4 4-4 4-4-4 4-4z" fill="#fff" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>RK Union Bank</h1>
+          <p class="tagline">Secure • Reliable • Local</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <nav class="top-nav" aria-label="Primary navigation">
+          <button class="nav-pill" data-section="create-section">New account</button>
+          <button class="nav-pill" data-section="list-section">Accounts</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="center-wrap">
+        <section class="hero">
+          <h2>Welcome to RK Union Bank</h2>
+          <p class="sub">Banking made simple — your funds are safe with us.</p>
+          <div id="api-status" class="api-status hidden" role="status" aria-live="polite">
+            <span id="api-status-text">Checking backend...</span>
+            <button id="retry-api" class="link-btn">Retry</button>
+          </div>
+        </section>
+
+        <div class="card-grid" role="region" aria-label="Banking operations">
+          <section id="create-section" class="card">
+            <h3>Create an Account</h3>
+            <form id="create-form" novalidate>
+              <label>Owner name<input type="text" name="ownerName" required /><div class="field-error" data-for="ownerName"></div></label>
+              <label>Email<input type="email" name="email" /><div class="field-error" data-for="email"></div></label>
+              <label>Initial deposit<input type="number" name="initialDeposit" step="0.01" required /><div class="field-error" data-for="initialDeposit"></div></label>
+              <div class="form-actions"><button type="submit" id="create-btn">Create Account</button></div>
+            </form>
+          </section>
+
+          <section id="list-section" class="card">
+            <h3>Your Accounts</h3>
+            <div class="summary-row" aria-label="Accounts overview">
+              <div class="summary-chip">
+                <span class="summary-label">Total accounts</span>
+                <span id="account-count" class="summary-value">—</span>
+              </div>
+              <div class="summary-chip">
+                <span class="summary-label">Total balance</span>
+                <span id="total-balance" class="summary-value">—</span>
+              </div>
+            </div>
+            <div id="message" role="status" aria-live="polite"></div>
+            <div class="table-wrap">
+              <table id="accounts-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Account #</th>
+                    <th>Owner</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="edit-section" class="card hidden">
+            <h3>Edit Account</h3>
+            <form id="edit-form" novalidate>
+              <input type="hidden" name="id" />
+              <label>Owner name<input type="text" name="ownerName" required /><div class="field-error" data-for="ownerName"></div></label>
+              <label>Email<input type="email" name="email" /><div class="field-error" data-for="email"></div></label>
+              <div class="form-actions"><button type="submit" id="save-btn">Save</button><button type="button" id="cancel-edit">Cancel</button></div>
+            </form>
+          </section>
+        </div>
+
+        <footer class="footer-note">
+          <small>If you see CORS errors, run this page through a local server (e.g., VS Code Live Server) or enable CORS in the backend.</small>
+        </footer>
+      </div>
+    </main>    
+
+    <script src="script.js"></script>
+  </body>
+</html>
